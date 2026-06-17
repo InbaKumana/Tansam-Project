@@ -4,9 +4,10 @@ import {
  Route
 } from "react-router-dom";
 
-import Login from "./pages/Login/login.jsx";
-import Register from "./pages/Register/register.jsx";
-import Dashboard from "./pages/Dashboard/dashboard.jsx";
+import Login from "./pages/login/login.jsx";
+import Register from "./pages/register/register.jsx";
+import Dashboard from "./pages/dashboard/dashboard.jsx";
+import Roles from "./pages/roles/roles.jsx";
 
 function App() {
 
@@ -29,6 +30,11 @@ function App() {
     <Route
       path="/dashboard"
       element={<Dashboard />}
+      />
+
+    <Route
+      path="/roles"
+      element={<Roles />}
     />
 
    </Routes>

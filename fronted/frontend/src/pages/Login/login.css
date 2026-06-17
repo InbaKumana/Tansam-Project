@@ -1,0 +1,125 @@
+/* login.css */
+
+/* Center the entire container on the page */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Form Container Card */
+.login-container {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+/* Heading */
+.login-container h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #333333;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+/* Form Layout */
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem; /* Creates even spacing between inputs and buttons */
+}
+
+/* Input Fields */
+.login-container input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fafafa;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Input Focus State */
+.login-container input:focus {
+  border-color: #007bff;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+  outline: none;
+}
+
+/* Submit Button */
+.login-container button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* Button Hover and Active States */
+.login-container button:hover {
+  background-color: #0056b3;
+}
+
+.login-container button:active {
+  transform: scale(0.98);
+}
+
+/* Register Redirect Text */
+.login-container p {
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  color: #666666;
+  font-size: 0.9rem;
+}
+
+/* Register Link */
+.login-container p a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.login-container p a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+/* --- Authentication Redirect Link Styles --- */
+.auth-redirect {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666666;
+}
+
+.auth-redirect .redirect-link {
+  color: #007bff;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.auth-redirect .redirect-link:hover {
+  color: #0056b3;
+}
