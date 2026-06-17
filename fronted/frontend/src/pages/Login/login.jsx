@@ -100,7 +100,13 @@ function Login() {
     <button>
       Login
     </button>
-
+    
+    <p>
+ Doesn't have an account?
+ <a href="/">
+  Register
+ </a>
+</p>
     
 
    </form>
