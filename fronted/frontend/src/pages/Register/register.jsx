@@ -1,106 +1,89 @@
 import "./register.css";
-import { useState } from "react";//usestate is used to manage the state of the form inputs
-import { useNavigate } from "react-router-dom";/*usenavigate is used to navigate to different routes programmatically*/
-import BASE_URL from "../../services/api"; //BASE_URL is the base URL for the API endpoints, imported from a separate file for better maintainability
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import BASE_URL from "../../services/api";
 
-function Register() {//the Register component is a functional component that renders the registration form and handles the registration logic
+function Register() {
+  const navigate = useNavigate();
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    age: "",
+    role: "admin"
+  });
 
- const navigate = useNavigate();
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    });
+  };
 
- const [form,setForm] = useState({
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`${BASE_URL}/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(form)
+      });
 
-   name:"",
-   email:"",
-   password:"",
-   age:"",
-   role:"admin"
-
- });
-
- const handleChange = (e)=>{
-
-   setForm({
-     ...form,
-     [e.target.name]:e.target.value
-   });
-
- };
-
- const handleSubmit = async(e)=>{
-
-   e.preventDefault();//preventDefault is used to prevent the default form submission behavior, which would cause a page reload
-
-   const response =
-   await fetch(
-    `${BASE_URL}/register`,
-    {
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify(form)
+      const data = await response.json();
+      alert(data.message || "Registration Successful");
+      navigate("/login");
+    } catch (err) {
+      console.error("Registration error:", err);
+      alert("Something went wrong during registration.");
     }
-   );
+  };
 
-   const data =
-   await response.json();
-
-   alert(data.message);
-
-   navigate("/");
-
- };
-
- return(
-
-  <div class="register-container">
-
-   <h2>Register</h2>
-
-   <form
-    onSubmit={handleSubmit}
-   >
-
-    <input
-     name="name"
-     placeholder="Name"
-     onChange={handleChange}
-    />
-
-    <input
-     name="email"
-     placeholder="Email"
-     onChange={handleChange}
-    />
-
-    <input
-     name="password"
-     placeholder="Password"
-     onChange={handleChange}
-    />
-
-    <input
-     name="age"
-     placeholder="Age"
-     onChange={handleChange}
-    />
-
-    <button>
-      Register
-    </button>
-    <p>
- Already have an account?
- <a href="/login">
-  Login
- </a>
-</p>
-
-   </form>
-
-  </div>
-
- );
-
+  return (
+    <div className="register-container">
+      <h2>Register Account</h2>
+      <form onSubmit={handleSubmit}>
+        <input 
+          name="name" 
+          value={form.name} 
+          placeholder="Full Name" 
+          onChange={handleChange} 
+          required 
+        />
+        <input 
+          name="email" 
+          type="email" 
+          value={form.email} 
+          placeholder="Email Address" 
+          onChange={handleChange} 
+          required 
+        />
+        <input 
+          name="password" 
+          type="password" 
+          value={form.password} 
+          placeholder="Password" 
+          onChange={handleChange} 
+          required 
+        />
+        <input 
+          name="age" 
+          type="number" 
+          value={form.age} 
+          placeholder="Age" 
+          onChange={handleChange} 
+          required 
+        />
+        <button type="submit">Sign Up</button>
+      </form>
+      
+      {/* New navigation redirect option */}
+      <div className="auth-redirect">
+        <p>Already have an account? <span onClick={() => navigate("/login")} className="redirect-link">Login here</span></p>
+      </div>
+    </div>
+  );
 }
 
 export default Register;

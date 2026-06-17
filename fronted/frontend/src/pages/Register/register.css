@@ -104,3 +104,23 @@ body {
   color: #0056b3;
   text-decoration: underline;
 }
+
+/* --- Authentication Redirect Link Styles --- */
+.auth-redirect {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666666;
+}
+
+.auth-redirect .redirect-link {
+  color: #007bff;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.auth-redirect .redirect-link:hover {
+  color: #0056b3;
+}
